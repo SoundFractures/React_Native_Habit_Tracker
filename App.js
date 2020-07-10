@@ -1,5 +1,6 @@
-import React from 'react';
-import {SafeAreaView} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text, SafeAreaView} from 'react-native';
+import auth from '@react-native-firebase/auth';
 import Wrapper from './Application/Views/wrapper';
 import BottomMenu from './Application/Views/Core/bottomMenu';
 

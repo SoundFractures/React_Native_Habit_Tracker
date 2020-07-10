@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1068127983724",
+    "firebase_url": "https://react-native-habit-tracker.firebaseio.com",
+    "project_id": "react-native-habit-tracker",
+    "storage_bucket": "react-native-habit-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068127983724:android:aaeb48c36e098b9e62e049",
+        "android_client_info": {
+          "package_name": "com.habittrackerrn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068127983724-ci5gbrcflod1ksb4fh57ch1i5n509lj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB6V0m3wihTcH4jJILJkpKCqbd790eTNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068127983724-ci5gbrcflod1ksb4fh57ch1i5n509lj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
