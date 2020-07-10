@@ -3,6 +3,9 @@ import {View, Text, TextInput} from 'react-native';
 import {Button} from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 
+import {Provider} from 'react-native-paper';
+import {theme} from './Core/theme';
+
 export default function Wrapper() {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
@@ -64,11 +67,13 @@ export default function Wrapper() {
       </View>
     );
   }
-
+  //Insert Menu and wrap it with provider (user)
   return (
     <View>
-      <Text>Welcome {user.email}</Text>
-      <Button onPress={handleSignOut}>Sign Out </Button>
+      <Provider theme={theme}>
+        <Text>Welcome {user.email}</Text>
+        <Button onPress={handleSignOut}>Sign Out </Button>
+      </Provider>
     </View>
   );
 }
