@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
+import {Button} from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 
 export default function Wrapper() {
@@ -56,7 +57,10 @@ export default function Wrapper() {
           onChangeText={(text2) => setPassword(text2)}
           value={password}
         />
-        <Button title="Sign in" onPress={handleSignIn} />
+
+        <Button icon="camera" onPress={handleSignIn}>
+          KUA DEJ
+        </Button>
       </View>
     );
   }
@@ -64,7 +68,7 @@ export default function Wrapper() {
   return (
     <View>
       <Text>Welcome {user.email}</Text>
-      <Button title="Sign out" onPress={handleSignOut} />
+      <Button onPress={handleSignOut}>Sign Out </Button>
     </View>
   );
 }
