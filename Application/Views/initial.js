@@ -3,8 +3,7 @@ import {View, Text} from 'react-native-paper';
 import {withFirebaseHOC} from '../../Firebase';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeView from './Habits/index';
-import ProfileView from './Profile/index';
+
 import LoginView from './Auth/login';
 import BottomNav from './bottomNav';
 

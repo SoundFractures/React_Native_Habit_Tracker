@@ -3,7 +3,7 @@ import {View, Button} from 'react-native';
 import {withFirebaseHOC} from '../../../Firebase';
 import {Text} from 'react-native-paper';
 
-const TodayView = (props) => {
+const TodayStack = (props) => {
   return (
     <View>
       <Text>Today</Text>
@@ -11,4 +11,4 @@ const TodayView = (props) => {
   );
 };
 
-export default withFirebaseHOC(TodayView);
+export default withFirebaseHOC(TodayStack);
