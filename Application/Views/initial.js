@@ -4,7 +4,9 @@ import {withFirebaseHOC} from '../../Firebase';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeView from './Habits/index';
+import ProfileView from './Profile/index';
 import LoginView from './Auth/login';
+import BottomNav from './bottomNav';
 
 export function SplashScreen(props) {
   return <Text>WAIT FOR USER BEMTI</Text>;
@@ -27,7 +29,10 @@ class Initial extends Component {
             isLoading: false,
           });
         } else {
-          console.log('No user found');
+          this.setState({
+            user: u,
+            isLoading: false,
+          });
         }
       });
     } catch (error) {
@@ -37,25 +42,27 @@ class Initial extends Component {
 
   render() {
     if (this.state.isLoading) {
-      // We haven't finished checking for the token yet
       return <SplashScreen />;
     }
     return (
       <NavigationContainer>
-        <Stack.Navigator>
-          {this.state.user != null ? (
+        <Stack.Navigator initialRouteName={this.state.user ? 'App' : 'Login'}>
+          <>
             <Stack.Screen
-              name="SignIn"
+              name="Login"
               options={{
                 headerShown: false,
               }}>
               {(props) => <LoginView {...props} user={this.state.user} />}
             </Stack.Screen>
-          ) : (
-            <Stack.Screen name="Home">
-              {(props) => <HomeView {...props} user={this.state.user} />}
-            </Stack.Screen>
-          )}
+            <Stack.Screen
+              name="App"
+              component={BottomNav}
+              options={{
+                headerShown: false,
+              }}
+            />
+          </>
         </Stack.Navigator>
       </NavigationContainer>
     );
