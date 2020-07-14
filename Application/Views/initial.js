@@ -43,6 +43,7 @@ class Initial extends Component {
     if (this.state.isLoading) {
       return <SplashScreen />;
     }
+
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName={this.state.user ? 'App' : 'Login'}>
@@ -56,11 +57,11 @@ class Initial extends Component {
             </Stack.Screen>
             <Stack.Screen
               name="App"
-              component={BottomNav}
               options={{
                 headerShown: false,
-              }}
-            />
+              }}>
+              {(props) => <BottomNav {...props} user={this.state.user} />}
+            </Stack.Screen>
           </>
         </Stack.Navigator>
       </NavigationContainer>

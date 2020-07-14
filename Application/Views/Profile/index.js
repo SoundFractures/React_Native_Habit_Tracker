@@ -12,9 +12,10 @@ const ProfileView = (props) => {
       console.log(error);
     }
   }
+
   return (
     <View>
-      <Text>Profile</Text>
+      <Text>Profile: {props.user.email}</Text>
       <Button title="Sign Out" onPress={() => handleSignOut()}></Button>
     </View>
   );

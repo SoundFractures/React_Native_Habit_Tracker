@@ -86,7 +86,7 @@ class Login extends Component {
                   buttonType="outline"
                   onPress={handleSubmit}
                   title="LOGIN"
-                  buttonColor="#039BE5"
+                  buttonColor="black"
                   disabled={!isValid || isSubmitting}
                   loading={isSubmitting}
                 />
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   header: {
-    color: '#3498db',
+    color: '#4d93f0',
     fontWeight: 'bold',
     fontSize: 40,
     marginTop: 50,
