@@ -4,14 +4,8 @@ import {withFirebaseHOC} from '../../../Firebase';
 import {Text} from 'react-native-paper';
 import {createStackNavigator} from '@react-navigation/stack';
 import ActionButton from 'react-native-action-button';
+import EditHabitView from './editHabit';
 
-function DetailsScreen(props) {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Details!</Text>
-    </View>
-  );
-}
 //https://reactnavigation.org/docs/params/
 function HabitsScreen(props) {
   return (
@@ -46,7 +40,7 @@ const HabitsStack = (props) => {
       </Stack.Screen>
       <Stack.Screen
         name="Details"
-        component={DetailsScreen}
+        component={EditHabitView}
         options={{
           title: 'Add/Edit Habit',
           headerStyle: {

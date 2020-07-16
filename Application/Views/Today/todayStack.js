@@ -25,7 +25,6 @@ const TodayScreen = (props) => {
 };
 
 const Stack = createStackNavigator();
-
 const TodayStack = (props) => {
   return (
     <Stack.Navigator>

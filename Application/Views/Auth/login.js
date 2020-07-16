@@ -1,14 +1,14 @@
 import React, {Component, Fragment} from 'react';
-import {Text, View, Button, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import {withFirebaseHOC} from '../../../Firebase';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {Ionicons} from 'react-native-vector-icons';
-import FormInput from './Components/FormInput';
-import FormButton from './Components/FormButton';
-import ErrorMessage from './Components/ErrorMessage';
+import FormInput from '../Components/FormInput';
+import FormButton from '../Components/FormButton';
+import ErrorMessage from '../Components/ErrorMessage';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
