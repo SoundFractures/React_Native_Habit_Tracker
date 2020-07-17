@@ -1,5 +1,15 @@
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+
 const Firebase = {
+  //utils
+  onResult(QuerySnapshot) {
+    console.log('Got Users collection result.');
+  },
+
+  onError(error) {
+    console.error(error);
+  },
   // auth
   loginWithEmail: (email, password) => {
     return auth().signInWithEmailAndPassword(email, password);
@@ -15,12 +25,15 @@ const Firebase = {
   },
 
   // firestore
-  createNewUser: (userData) => {
-    return firebase
-      .firestore()
-      .collection('users')
-      .doc(`${userData.uid}`)
-      .set(userData);
+  getHabits: (uid) => {
+    let habits = [];
+    firestore()
+      .collection('Habits')
+      .where('userId', '==', uid)
+      .get()
+      .then((querySnapshot) => {});
+
+    console.log(habits);
   },
 };
 

@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Avatar, Divider} from 'react-native-paper';
+import {withFirebaseHOC} from '../../../Firebase';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -74,14 +75,43 @@ class EditHabitView extends Component {
       return activeDays;
     });
   }
+  handleHabit = async (values, actions) => {
+    const {name, description, goal} = values;
+    let days = this.state.activeDays
+      .filter(function (day) {
+        return day.active == true;
+      })
+      .map(function ({name}) {
+        return name;
+      });
+
+    try {
+      const response = await this.props.firebase.addNewHabit(
+        name,
+        description,
+        goal,
+        days,
+        this.props.user.uid,
+      );
+
+      if (response._documentPath) {
+        this.props.navigation.pop();
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      actions.setSubmitting(false);
+    }
+  };
+
   render() {
-    console.log(this.state.activeDays);
+    //console.log(this.props);
     return (
       <ScrollView style={{backgroundColor: 'white', height: '100%'}}>
         <Formik
           initialValues={{name: '', description: '', goal: 1}}
           onSubmit={(values, actions) => {
-            this.handleSubmit(values, actions);
+            this.handleHabit(values, actions);
           }}
           validationSchema={validationSchema}>
           {({
@@ -186,4 +216,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EditHabitView;
+export default withFirebaseHOC(EditHabitView);
