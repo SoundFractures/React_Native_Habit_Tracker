@@ -4,9 +4,9 @@ import {withFirebaseHOC} from '../../../Firebase';
 import {Text} from 'react-native-paper';
 import {createStackNavigator} from '@react-navigation/stack';
 import ActionButton from 'react-native-action-button';
+import AddHabitView from './addHabit';
 import EditHabitView from './editHabit';
 import HabitsScreen from './habits';
-//https://reactnavigation.org/docs/params/
 
 const Stack = createStackNavigator();
 
@@ -26,9 +26,20 @@ const HabitsStack = (props) => {
         {(p) => <HabitsScreen {...p} user={props.user} />}
       </Stack.Screen>
       <Stack.Screen
-        name="Details"
+        name="Add_Habit"
         options={{
-          title: 'Add/Edit Habit',
+          title: 'Add Habit',
+          headerStyle: {
+            backgroundColor: '#4d93f0',
+          },
+          headerTintColor: '#fff',
+        }}>
+        {(p) => <AddHabitView {...p} user={props.user} />}
+      </Stack.Screen>
+      <Stack.Screen
+        name="Edit_Habit"
+        options={{
+          title: 'Edit Habit',
           headerStyle: {
             backgroundColor: '#4d93f0',
           },

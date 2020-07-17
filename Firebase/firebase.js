@@ -1,15 +1,10 @@
 import auth from '@react-native-firebase/auth';
+import app from '@react-native-firebase/app';
 import firestore from '@react-native-firebase/firestore';
 
 const Firebase = {
-  //utils
-  onResult(QuerySnapshot) {
-    console.log('Got Users collection result.');
-  },
 
-  onError(error) {
-    console.error(error);
-  },
+
   // auth
   loginWithEmail: (email, password) => {
     return auth().signInWithEmailAndPassword(email, password);
@@ -25,15 +20,53 @@ const Firebase = {
   },
 
   // firestore
-  getHabits: (uid) => {
+
+  //habits
+
+
+  onHabitChange: (uid) => {
     let habits = [];
     firestore()
       .collection('Habits')
       .where('userId', '==', uid)
-      .get()
-      .then((querySnapshot) => {});
+      .onSnapshot((items) => {
+        items._docs.map((habit) => habits.push(habit._data));
+      });
 
-    console.log(habits);
+    return habits;
+  },
+
+  getHabits: async (uid) => {
+    let habits = [];
+    await firestore()
+      .collection('Habits')
+      .where('userId', '==', uid)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot._docs.map((habit) => habits.push(habit._data));
+      });
+    return habits;
+  },
+
+  addNewHabit: (name, description, goal, activeDays, uid) => {
+    console.log(uid);
+    return firestore().collection('Habits').add({
+      name: name,
+      description: description,
+      userId: uid,
+      activeDays: activeDays,
+      goal: goal,
+      date: Date.now(),
+      progress: 0,
+    });
+  },
+
+  updateHabit: (id, name, description) => {
+    return firestore().collection('Habits').doc(id).update({
+      name: name,
+      description: description
+    });
+
   },
 };
 
