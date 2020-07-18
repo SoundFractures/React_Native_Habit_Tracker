@@ -20,7 +20,7 @@ const HabitCard = ({navigation, habit}) => {
               return (
                 <Avatar.Text
                   key={day.date}
-                  size={40}
+                  size={25}
                   label={day.charAt(0)}
                   color="#4d93f0"
                   backgroundColor="white"
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
   avatarStyle: {
     borderWidth: 2,
     borderColor: '#4d93f0',
-    height: 25,
-    width: 25,
+    height: 20,
+    width: 20,
     borderStyle: 'solid',
     justifyContent: 'center',
     margin: 1,

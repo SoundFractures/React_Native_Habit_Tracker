@@ -3,26 +3,8 @@ import {View, Button} from 'react-native';
 import {withFirebaseHOC} from '../../../Firebase';
 import {Text} from 'react-native-paper';
 import {createStackNavigator} from '@react-navigation/stack';
-
-function DetailsScreen2(props) {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Details!</Text>
-    </View>
-  );
-}
-//https://reactnavigation.org/docs/params/
-const TodayScreen = (props) => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Habits!</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => props.navigation.navigate('Details2')}
-      />
-    </View>
-  );
-};
+import TodayScreen from './today';
+import EditTaskView from './editTask';
 
 const Stack = createStackNavigator();
 const TodayStack = (props) => {
@@ -30,26 +12,26 @@ const TodayStack = (props) => {
     <Stack.Navigator>
       <Stack.Screen
         name="Today"
-        component={TodayScreen}
         options={{
           title: 'Tasks today',
           headerStyle: {
             backgroundColor: '#4d93f0',
           },
           headerTintColor: '#fff',
-        }}
-      />
+        }}>
+        {(p) => <TodayScreen {...p} user={props.user} />}
+      </Stack.Screen>
       <Stack.Screen
-        name="Details2"
-        component={DetailsScreen2}
+        name="Edit_Task"
         options={{
           title: 'Task 123',
           headerStyle: {
             backgroundColor: '#4d93f0',
           },
           headerTintColor: '#fff',
-        }}
-      />
+        }}>
+        {(p) => <EditTaskView {...p} user={props.user} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };

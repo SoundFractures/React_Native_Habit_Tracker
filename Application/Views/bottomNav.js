@@ -31,9 +31,9 @@ function BottomNav(props) {
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons name="check" color={color} size={26} />
           ),
-        }}
-        component={TodayStack}
-      />
+        }}>
+        {(navProps) => <TodayStack {...navProps} user={props.user} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Profile"
         options={{
